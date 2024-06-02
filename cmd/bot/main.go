@@ -36,7 +36,9 @@ func main() {
 	}
 	tgBot := telegram.NewBot(bot, storage, log)
 	log.Info("starting telegram-bot")
-	tgBot.Start()
+	if err := tgBot.Start(); err != nil {
+		log.Error("bot runtime error", sl.Err(err))
+	}
 }
 
 func setupLogger(env string) *slog.Logger {
