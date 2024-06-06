@@ -7,16 +7,28 @@ import (
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/xndrg/scheduly/internal/storage"
+	"github.com/xndrg/scheduly/pkg/scraper"
 )
 
 type Bot struct {
 	bot     *tgbotapi.BotAPI
 	Storage storage.Storage
 	log     *slog.Logger
+	scraper scraper.Scraper
 }
 
-func NewBot(bot *tgbotapi.BotAPI, storage storage.Storage, log *slog.Logger) *Bot {
-	return &Bot{bot: bot, Storage: storage, log: log}
+func NewBot(
+	bot *tgbotapi.BotAPI,
+	storage storage.Storage,
+	log *slog.Logger,
+	scraper scraper.Scraper,
+) *Bot {
+	return &Bot{
+		bot:     bot,
+		Storage: storage,
+		log:     log,
+		scraper: scraper,
+	}
 }
 
 func (b *Bot) Start() error {

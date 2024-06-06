@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	replyStart   = "Started"
+	replyStart   = "Привет! Для начала работы, введи номер своей группы."
 	replyUnknown = "Unknown command"
 )
 
